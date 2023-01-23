@@ -1,2 +1,2 @@
 #!/bin/bash/python3
-export PYFILE = main.py
+python main.py
