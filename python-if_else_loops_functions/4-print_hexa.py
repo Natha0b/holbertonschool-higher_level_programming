@@ -2,4 +2,4 @@
 
 for numbers in range(99):
     h = hex(numbers)
-    print("{}".format(numbers), h)
+    print("{}".format(numbers), "=", h)
