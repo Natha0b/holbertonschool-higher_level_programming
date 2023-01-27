@@ -12,3 +12,4 @@ if __name__ == "__main__":
             print("{:d} arguments:".format(args))
         for i, args in enumerate(argv[1:]):
             print("{:d}: {}".format(i + 1, args))
+            
