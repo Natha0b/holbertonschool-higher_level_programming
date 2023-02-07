@@ -5,10 +5,11 @@
 
 class Square:
     """class square"""
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         """Initialization of Square object with size.
         """
         self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -22,6 +23,13 @@ class Square:
 
         if value < 0:
             raise ValueError("size must be >= 0")
+    
+    @property
+    def position(self):
+        return self.__position
+
+    
+
         self.__size = value
 
     def area(self):
