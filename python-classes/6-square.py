@@ -25,7 +25,7 @@ class Square:
             raise ValueError("size must be >= 0")
 
         self.__size = value
-    
+
     @property
     def position(self):
         return self.__position
@@ -45,7 +45,10 @@ class Square:
 
     def my_print(self):
         if self.__size != 0:
-            for i in range(self.__size):
-                print("#" * self.__size)
+            for row in range(self.__position[1]):
+                print("")
+            for col in range(self.__size):
+                print("{}{}".format(" " * self.__position[0],
+                                    "#" * self.__size))
         else:
             print("")
