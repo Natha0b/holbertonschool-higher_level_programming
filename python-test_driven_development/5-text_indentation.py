@@ -9,17 +9,14 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     chars = [".", ":", "?"]
-    skip_next = False
-    
-    for idx, i in enumerate(text):
-        if skip_next:
-            skip_next = False
-            continue
+    prev = 0
 
-        if i in chars:
-            print(i, end="\n")
-            print()
-            skip_next = True
-
-        else:
-            print(i, end="")
+    for i in range(len(text)):
+        if i == len(text) - 1:
+            print(text[prev:i + 1], end="")
+        elif text[i] in chars:
+            print(text[prev:i + 1], end="")
+            print('\n\n')
+            prev = i + 1
+            while text[prev] == " ":
+                prev += 1
