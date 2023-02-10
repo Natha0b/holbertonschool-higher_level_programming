@@ -20,5 +20,6 @@ def text_indentation(text):
                 continue
             else:
                 print(i, end="")
+
         else:
             print(i, end="")
