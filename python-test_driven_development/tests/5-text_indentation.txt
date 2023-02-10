@@ -23,3 +23,10 @@ TypeError: text_indentation() missing 1 required positional argument: 'text'
 My
 <BLANKLINE>
 Name.
+
+>>> text_indentation("Holberton. school? cool")
+Holberton.
+<BLANKLINE>
+school?
+<BLANKLINE>
+cool
