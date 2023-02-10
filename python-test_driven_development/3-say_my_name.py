@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""function that divides all elements of a matrix."""
+"""function that prints My name is <first name> <last name>"""
 
 
 def say_my_name(first_name, last_name=""):
-    """function that divides all elements of a matrix."""
+    """prints My name is <first name> <last name>"""
 
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
