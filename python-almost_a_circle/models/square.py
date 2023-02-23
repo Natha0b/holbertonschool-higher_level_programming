@@ -27,7 +27,7 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """that assigns an argument to each attribute"""
         if args:
-            order = ["id", "x", "y"]
+            order = ["id", "size", "x", "y"]
             for index, arg in enumerate(args):
                 setattr(self, order[index], arg)
 
@@ -35,4 +35,3 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
-
