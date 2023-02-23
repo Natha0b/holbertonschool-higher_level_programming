@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """create class Rectangle"""
-from models.base import Base
+from base import Base
 
 
 class Rectangle(Base):
@@ -90,3 +90,11 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """that returns the dictionary representation of a Rectangle"""
+        return {'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y}
