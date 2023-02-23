@@ -23,3 +23,16 @@ class Square(Rectangle):
     def size(self, value):
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """that assigns an argument to each attribute"""
+        if args:
+            order = ["id", "x", "y"]
+            for index, arg in enumerate(args):
+                setattr(self, order[index], arg)
+
+        elif kwargs:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+
