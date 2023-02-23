@@ -35,3 +35,10 @@ class Base:
                 list_n.append(i.to_dictionary())
             list_n = cls.to_json_string(list_n)
             file.write(list_n)
+
+    @staticmethod
+    def from_json_string(json_string):
+        list = []
+        if json_string is None or len(json_string) == 0:
+            return list
+        return json.loads(json_string)
