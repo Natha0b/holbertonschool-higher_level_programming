@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """the first class Base"""
 import json
+import os.path
 
 
 class Base:
@@ -38,6 +39,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """that returns the list of the JSON string representation"""
         list = []
         if json_string is None or len(json_string) == 0:
             return list
@@ -45,6 +47,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """ that returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
             instance = cls(1, 1)
 
@@ -54,3 +57,17 @@ class Base:
         instance.update(**dictionary)
 
         return instance
+
+    @classmethod
+    def load_from_file(cls):
+        """that returns a list of instances"""
+        ret = []
+        filename = "{}.json".format(cls.__name__)
+        if os.path.isfile(filename):
+            with open(filename, "r") as file:
+                str_list = file.read()
+            dict_list = cls.from_json_string(str_list)
+            for obj_dict in dict_list:
+                new = cls.create(**obj_dict)
+                ret.append(new)
+            return ret
