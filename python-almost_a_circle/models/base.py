@@ -49,7 +49,7 @@ class Base:
             instance = cls(1, 1)
 
         if cls.__name__ == "Square":
-            instance = (1)
+            instance = cls(1)
 
         instance.update(**dictionary)
 
