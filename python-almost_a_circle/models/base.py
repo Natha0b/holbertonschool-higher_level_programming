@@ -70,4 +70,4 @@ class Base:
             for obj_dict in dict_list:
                 new = cls.create(**obj_dict)
                 ret.append(new)
-            return ret
+        return ret
