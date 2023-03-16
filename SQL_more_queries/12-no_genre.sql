@@ -1,7 +1,7 @@
 --  Lists all shows contained in hbtn_0d_tvshows
-SELECT tv_shows.title
-FROM tv_shows
-LEFT JOIN tv_show_genres
-ON tv_shows.id = tv_show_genres.show_id
-WHERE tv_show_genres.genre_id IS NULL
-ORDER BY tv_shows.title ASC;
+SELECT sh.title, sg.genre_id
+FROM tv_shows AS sh 
+LEFT JOIN tv_show_genres AS sg
+ON sh.id = sg.show_id
+WHERE sg.genre_id IS NULL
+ORDER BY sh.title, sg.genre_id ASC;
