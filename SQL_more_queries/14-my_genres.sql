@@ -5,6 +5,6 @@ FROM tv_genres AS gen
 INNER JOIN tv_show_genres AS sh
       ON gen.id = sh.genre_id
 INNER JOIN tv_shows AS st
-      ON st.id = sh.shows_id
+      ON st.id = sh.show_id
 WHERE st.title = 'Dexter'
 ORDER BY gen.name;
