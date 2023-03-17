@@ -23,7 +23,9 @@ if __name__ == "__main__":
                 WHERE states.name=%s\
                 ORDER by cities.id ASC", (matchName,))
     query_rows = cur.fetchall()
+    cities = []
     for row in query_rows:
-        print(", ".join(row[0] for row in query_rows))
+        cities.append("{}".format(row[0]))
+        print(", ".join(cities))
     cur.close()
     conn.close()
