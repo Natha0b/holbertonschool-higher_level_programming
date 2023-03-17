@@ -12,13 +12,13 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     # Arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
     engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                           .format(mysql_username, mysql_password,
-                                   database_name), pool_pre_ping=True)
+                           .format(username, password, database),
+                           pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
