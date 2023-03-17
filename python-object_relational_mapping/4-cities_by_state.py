@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Third MySQLdb script
+lists all cities from the database 
 """
 
 

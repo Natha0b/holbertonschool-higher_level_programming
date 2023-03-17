@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Third MySQLdb script
+ takes in the name of a state as an argument and lists
 """
 
 
