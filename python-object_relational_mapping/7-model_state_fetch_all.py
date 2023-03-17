@@ -16,18 +16,18 @@ Base = declarative_base()
 
 class State(Base):
     """class state"""
-    tablename = 'states'
+    __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
 
 
 if __name__ == '__main__':
-    db_username = sys.argv[1]
-    db_password = sys.argv[2]
-    db_name = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                           .format(db_username, db_password, db_name),
+                           .format(username, password, database),
                            pool_pre_ping=True)
 
     Base.metadata.create_all(engine)
