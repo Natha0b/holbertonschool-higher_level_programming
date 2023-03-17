@@ -25,6 +25,6 @@ if __name__ == "__main__":
     cities = []
     for row in query_rows:
         cities.append("{}".format(row[0]))
-        print(", ".join(cities))
+    print(", ".join(cities))
     cur.close()
     conn.close()
