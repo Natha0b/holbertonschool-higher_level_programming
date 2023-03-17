@@ -5,24 +5,35 @@ lists all State objects from the database hbtn_0e_6_usa
 
 
 import sys
-from model_state import State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+class State(Base):
+    tablename = 'states'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(128), nullable=False)
 
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                           .format(username, password, database),
+
+if __name__ == '__main__':
+    db_username = sys.argv[1]
+    db_password = sys.argv[2]
+    db_name = sys.argv[3]
+
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(db_username, db_password, db_name),
                            pool_pre_ping=True)
 
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+    states = session.query(State).order_by(State.id).all()
 
-    for state in session.query(State).order_by(State.id).all():
-        print("{:d}: {}".format(state.id, state.name))
-
+    for state in states:
+        print('{}: {}'.format(state.id, state.name))
     session.close()
