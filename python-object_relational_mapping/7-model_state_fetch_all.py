@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+script that lists all State objects from the database
 """
 
 
@@ -15,19 +15,18 @@ Base = declarative_base()
 
 
 class State(Base):
-    """class state"""
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
 
 
 if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    db_username = sys.argv[1]
+    db_password = sys.argv[2]
+    db_name = sys.argv[3]
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                           .format(username, password, database),
+                           .format(db_username, db_password, db_name),
                            pool_pre_ping=True)
 
     Base.metadata.create_all(engine)
