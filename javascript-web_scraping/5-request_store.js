@@ -3,24 +3,18 @@
 script that gets the contents of a webpage
 and stores it in a file.
 */
-const request = require('request');
 const fs = require('fs');
+const request = require('request');
+const { argv } = require('process');
 
-const url = process.argv[2];
-const filePath = process.argv[3];
-
-request.get(url, (error, response, body) => {
+request(argv[2], (error, response, body) => {
   if (error) {
-    console.error(error);
-    return;
+    console.log(error);
+  } else {
+    fs.writeFile(argv[3], body, 'utf8', (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
   }
-
-  fs.writeFile(filePath, body, 'utf-8', (error) => {
-    if (error) {
-      console.error(error);
-      return;
-    }
-
-    console.log(`The contents of ${url} have been saved to ${filePath}`);
-  });
 });
